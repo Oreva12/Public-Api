@@ -1,13 +1,17 @@
 from flask import Flask, jsonify
-from datetime import datetime
+from datetime import datetime, timezone
 
 app = Flask(__name__)
 
 @app.route('/')
 def get_info():
     email = "ovedheo@gmail.com"
-    current_datetime = datetime.datetime.now(datetime.UTC) + "Z"
+    current_datetime = datetime.now(timezone.utc).isoformat()
     github_url = "https://github.com/oreva12/Public-Api.git"
+
+    print(f"Email: {email}")
+    print(f"Current Datetime: {current_datetime}")
+    print(f"GitHub URL: {github_url}")
 
     return jsonify({
         "email": email,
